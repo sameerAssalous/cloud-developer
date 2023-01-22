@@ -47,7 +47,23 @@ import fs from "fs";
   } );
 
   app.get( "/filteredimage", async ( req, res ) => {
+    const imageUrl = req.query.image_url;
+    const filteredpath = await filterImageFromURL(imageUrl);
 
+
+     await res.sendFile(filteredpath);
+     res.on("finish", function (){
+       const dir = __dirname + '/util/tmp/';
+       const files = fs.readdirSync(dir);
+       let allFilesList: string[] = [];
+       files.map(file => {
+         const name = dir + '/' + file;
+         if (fs.statSync(name).isFile()) {
+           allFilesList.push(name);
+         }
+       });
+       deleteLocalFiles(allFilesList);
+     });
   } );
 
 })();
