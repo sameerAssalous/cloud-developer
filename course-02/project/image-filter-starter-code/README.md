@@ -1,48 +1,34 @@
-# Udagram Image Filtering Microservice
+# Udagram project
 
-Udagram is a simple cloud application developed alongside the Udacity Cloud Engineering Nanodegree. It allows users to register and log into a web client, post photos to the feed, and process photos using an image filtering microservice.
+- Links for filter images endpoint
+- http://udagram-sameer-dev-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/commons/7/72/Golden_tabby_and_white_kitten_n03.jpg
+- http://udagram-sameer-dev-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Gladiolus_maculatus_Western_Cape.jpg/800px-Gladiolus_maculatus_Western_Cape.jpg
+- http://udagram-sameer-dev-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://blog.logrocket.com/wp-content/uploads/2021/10/drawing-images-canvas-node.png
 
-The project is split into three parts:
-1. [The Simple Frontend](https://github.com/udacity/cloud-developer/tree/master/course-02/exercises/udacity-c2-frontend)
-A basic Ionic client web application which consumes the RestAPI Backend. [Covered in the course]
-2. [The RestAPI Backend](https://github.com/udacity/cloud-developer/tree/master/course-02/exercises/udacity-c2-restapi), a Node-Express server which can be deployed to a cloud service. [Covered in the course]
-3. [The Image Filtering Microservice](https://github.com/udacity/cloud-developer/tree/master/course-02/project/image-filter-starter-code), the final project for the course. It is a Node-Express application which runs a simple script to process images. [Your assignment]
+You can find screen shots in file udagram screen shots.zip
 
-## Tasks
 
-### Setup Node Environment
 
-You'll need to create a new node server. Open a new terminal within the project directory and run:
 
-1. Initialize a new project: `npm i`
-2. run the development server with `npm run dev`
+# Archival Note
+**Fork** the Udacity's repository to your personal Github account and clone to your local. We do not encourage pushing your personal development work to the Udacity's starter repository. Therefore, we've decided to archive this repository. However, learners will be able to fork it to their personal Github account but cannot submit PRs to this repository. If you have any issues or suggestions to make, feel free to:
+- Utilize the https://knowledge.udacity.com/ forum to seek help on content-specific issues.
+- Submit a support ticket along with the link to your forked repository if (learners are) blocked for other reasons. You can find the link to file a support ticket in your classroom home.
 
-### Create a new endpoint in the server.ts file
+# ND9990 cloud-developer
+Content for Udacity's cloud developer nanodegree's following two courses:
+* Course 02 - Full Stack Apps on AWS
+* Course 04 - Develop & Deploy Serverless App
 
-The starter code has a task for you to complete an endpoint in `./src/server.ts` which uses query parameter to download an image from a public URL, filter the image, and return the result.
-
-We've included a few helper functions to handle some of these concepts and we're importing it for you at the top of the `./src/server.ts`  file.
-
-```typescript
-import {filterImageFromURL, deleteLocalFiles} from './util/util';
+Here is the repository structure:
+```bash
+├── README.md
+├── course-02
+│   ├── exercises
+│   └── project
+└── course-04
+    ├── exercises
+    └── project
 ```
 
-### Deploying your system
 
-Follow the process described in the course to `eb init` a new application and `eb create` a new environment to deploy your image-filter service! Don't forget you can use `eb deploy` to push changes.
-
-## Stand Out (Optional)
-
-### Refactor the course RESTapi
-
-If you're feeling up to it, refactor the course RESTapi to make a request to your newly provisioned image server.
-
-### Authentication
-
-Prevent requests without valid authentication headers.
-> !!NOTE if you choose to submit this, make sure to add the token to the postman collection and export the postman collection file to your submission so we can review!
-
-### Custom Domain Name
-
-Add your own domain name and have it point to the running services (try adding a subdomain name to point to the processing server)
-> !NOTE: Domain names are not included in AWS’ free tier and will incur a cost.

@@ -1,8 +1,9 @@
 # Udagram project
 
 - Links for filter images endpoint 
-
-- filteredimage?image_url=https://upload.wikimedia.org/wikipedia/commons/b/bd/Golden_tabby_and_white_kitten_n01.jpg
+- http://udagram-sameer-dev-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/commons/7/72/Golden_tabby_and_white_kitten_n03.jpg
+- http://udagram-sameer-dev-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Gladiolus_maculatus_Western_Cape.jpg/800px-Gladiolus_maculatus_Western_Cape.jpg
+- http://udagram-sameer-dev-dev.us-east-1.elasticbeanstalk.com/filteredimage?image_url=https://blog.logrocket.com/wp-content/uploads/2021/10/drawing-images-canvas-node.png
 
 You can find screen shots in file udagram screen shots.zip
 
