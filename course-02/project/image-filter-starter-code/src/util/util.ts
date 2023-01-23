@@ -15,7 +15,7 @@ export async function filterImageFromURL(inputURL: string): Promise<string> {
 
       let photo : any = await GetImage(inputURL,__dirname + '/tmp/image.jpg');
       photo = await Jimp.read(photo);
-      const outpath =
+      const outpath : string =
         "/tmp/filtered." + Math.floor(Math.random() * 2000) + ".jpg";
 
       await photo
@@ -32,7 +32,7 @@ export async function filterImageFromURL(inputURL: string): Promise<string> {
 }
 
 async function GetImage(inputURL:string, filepath:string) {
-  const result = await Axios.get(inputURL,{
+  const result : any = await Axios.get(inputURL,{
     method: 'GET',
     responseType: 'stream'
   });

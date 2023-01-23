@@ -51,15 +51,15 @@ import fs from "fs";
     if (imageUrl == undefined){
       return res.status(400).send('Please provide image url!');
     }
-    const filteredpath = await filterImageFromURL(imageUrl);
+    const filteredpath : string = await filterImageFromURL(imageUrl);
 
      await res.status(200).sendFile(filteredpath);
      res.on("finish", function (){
-       const dir = __dirname + '/util/tmp/';
-       const files = fs.readdirSync(dir);
+       const dir : string = __dirname + '/util/tmp/';
+       const files : string[] = fs.readdirSync(dir);
        let allFilesList: string[] = [];
        files.map(file => {
-         const name = dir + '/' + file;
+         const name : string = dir + '/' + file;
          if (fs.statSync(name).isFile()) {
            allFilesList.push(name);
          }
