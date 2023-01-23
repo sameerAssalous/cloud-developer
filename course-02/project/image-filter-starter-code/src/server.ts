@@ -1,6 +1,7 @@
-import express from 'express';
+import express, {response} from 'express';
 import bodyParser from 'body-parser';
 import {filterImageFromURL, deleteLocalFiles} from './util/util';
+import fs from "fs";
 
 (async () => {
 
@@ -30,11 +31,12 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   /**************************************************************************** */
 
   //! END @TODO1
-  
+
+
   // Root Endpoint
   // Displays a simple message to the user
   app.get( "/", async ( req, res ) => {
-    res.send("try GET /filteredimage?image_url={{}}")
+    res.send("try GET /filteredimage")
   } );
   
 
@@ -43,4 +45,26 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       console.log( `server running http://localhost:${ port }` );
       console.log( `press CTRL+C to stop server` );
   } );
+
+  app.get( "/filteredimage", async ( req, res ) => {
+    const imageUrl = req.query.image_url;
+    const filteredpath = await filterImageFromURL(imageUrl);
+
+
+     await res.sendFile(filteredpath);
+     res.on("finish", function (){
+       const dir = __dirname + '/util/tmp/';
+       const files = fs.readdirSync(dir);
+       let allFilesList: string[] = [];
+       files.map(file => {
+         const name = dir + '/' + file;
+         if (fs.statSync(name).isFile()) {
+           allFilesList.push(name);
+         }
+       });
+       deleteLocalFiles(allFilesList);
+     });
+  } );
+
 })();
+
