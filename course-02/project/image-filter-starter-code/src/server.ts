@@ -47,11 +47,13 @@ import fs from "fs";
   } );
 
   app.get( "/filteredimage", async ( req, res ) => {
-    const imageUrl = req.query.image_url;
+    const imageUrl : string | undefined = req.query.image_url;
+    if (imageUrl == undefined){
+      return res.status(400).send('Please provide image url!');
+    }
     const filteredpath = await filterImageFromURL(imageUrl);
 
-
-     await res.sendFile(filteredpath);
+     await res.status(200).sendFile(filteredpath);
      res.on("finish", function (){
        const dir = __dirname + '/util/tmp/';
        const files = fs.readdirSync(dir);
